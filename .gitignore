@@ -1,0 +1,19 @@
+# Dependencies and generated application output
+node_modules/
+.next/
+out/
+dist/
+build/
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+
+# Local tooling and operating-system files
+.vscode/
+.DS_Store
+Thumbs.db
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Printable Victory Heritage International School application form template.">
+  <title>VHIS Application Form | Printable template</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .application-page { min-height: 100vh; padding: 45px 0; background: var(--cream); }
+    .application-sheet { max-width: 820px; margin: auto; padding: 56px 64px; background: white; }
+    .application-sheet__header { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
+    .application-sheet__header h1 { margin: 0 0 6px; color: var(--green); font-size: 30px; }
+    .application-sheet__header p { margin: 0; color: var(--muted); font-size: 11px; }
+    .application-badge { padding: 8px 10px; border: 1px solid var(--line); color: var(--muted); font-size: 9px; text-align: center; }
+    .application-logo { display: block; width: min(230px, 42%); height: auto; object-fit: contain; }
+    .application-notice { margin: 22px 0; padding: 12px 14px; background: var(--cream); color: #5d675f; font-size: 11px; }
+    .application-section { margin: 26px 0 0; }
+    .application-section h2 { margin: 0 0 14px; color: var(--green); font-family: var(--sans); font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+    .application-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 15px 20px; }
+    .application-field { min-height: 48px; padding-bottom: 6px; border-bottom: 1px solid #cfd4cd; color: #657069; font-size: 10px; }
+    .application-field--full { grid-column: 1/-1; }
+    .application-lines { height: 56px; margin-top: 8px; border-bottom: 1px solid #cfd4cd; }
+    .application-actions { display: flex; justify-content: space-between; align-items: center; gap: 20px; max-width: 820px; margin: 0 auto 15px; }
+    .application-actions a { color: var(--green); font-size: 11px; }
+    .application-actions button { padding: 9px 14px; border: 1px solid var(--green); background: var(--green); color: white; cursor: pointer; }
+    @media (max-width: 620px) { .application-page { padding: 15px 0; } .application-sheet { padding: 30px 22px; } .application-sheet__header h1 { font-size: 24px; } .application-fields { grid-template-columns: 1fr; } .application-field--full { grid-column: 1; } .application-actions { padding: 0 18px; } }
+    @media print { .application-page { padding: 0; background: white; } .application-sheet { max-width: none; padding: 20mm; } .application-actions { display: none; } }
+  </style>
+</head>
+<body>
+  <main class="application-page">
+    <div class="application-actions"><a href="admissions.html">← Back to admissions</a><button type="button" onclick="window.print()">Print draft / save as PDF</button></div>
+    <article class="application-sheet">
+      <header class="application-sheet__header">
+        <div><h1>Victory Heritage International School</h1><p>Application form · printable template</p></div>
+        <img class="application-logo" src="assets/vhis-logo.png" alt="Victory Heritage International School logo">
+      </header>
+      <p class="application-notice">Draft template for VHIS review — not an approved school application form. Use “Print draft / save as PDF” to create a local copy for design review only. Confirm all requirements, the submission process, privacy notice and official contact details before publishing or use.</p>
+      <section class="application-section"><h2>Student details</h2><div class="application-fields">
+        <div class="application-field">Student's full name</div><div class="application-field">Date of birth</div>
+        <div class="application-field">Gender (optional / as approved)</div><div class="application-field">Nationality</div>
+        <div class="application-field">Division applying to: Nursery / Primary / Secondary</div><div class="application-field">Class / year group (if known)</div>
+        <div class="application-field application-field--full">Current or previous school (if applicable)</div>
+        <div class="application-field application-field--full">Home address</div>
+      </div></section>
+      <section class="application-section"><h2>Parent or guardian details</h2><div class="application-fields">
+        <div class="application-field">Parent / guardian full name</div><div class="application-field">Relationship to student</div>
+        <div class="application-field">Telephone number</div><div class="application-field">Email address</div>
+        <div class="application-field application-field--full">Address (if different from student)</div>
+      </div></section>
+      <section class="application-section"><h2>Additional information</h2><div class="application-fields">
+        <div class="application-field application-field--full">Anything else you would like the school to know</div>
+        <div class="application-lines application-field--full"></div>
+        <div class="application-field application-field--full">Parent / guardian signature</div>
+        <div class="application-field">Date</div><div class="application-field">Office use only</div>
+      </div></section>
+      <p class="application-notice">This is a printable draft only; it does not submit an application. Please contact VHIS to confirm the approved form and how to return it.</p>
+    </article>
+  </main>
+</body>
+</html>

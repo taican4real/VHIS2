@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Responsive browser prototype starting points for the Victory Heritage International School website.">
+  <title>VHIS Responsive Prototype</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="prototype-launcher">
+  <main class="prototype-shell">
+    <header class="prototype-heading">
+      <a href="index.html" aria-label="Victory Heritage International School home"><img src="assets/vhis-logo.png" alt="Victory Heritage International School"></a>
+      <div><p class="eyebrow"><span class="eyebrow__rule"></span> Phase 10 · Responsive browser prototype</p><h1>Choose a review <em>viewport.</em></h1><p>This connected website preview can be reviewed at the specified device widths. It is a browser prototype, not an editable Figma file.</p></div>
+    </header>
+    <section class="prototype-review" aria-label="Responsive prototype controls">
+      <div class="prototype-toolbar">
+        <div class="prototype-controls" role="group" aria-label="Choose preview width">
+          <button type="button" class="button button--small" data-preview-width="1440" aria-pressed="true">Desktop · 1440 px</button>
+          <button type="button" class="button button--small button--outline" data-preview-width="768" aria-pressed="false">Tablet · 768 px</button>
+          <button type="button" class="button button--small button--outline" data-preview-width="390" aria-pressed="false">Mobile · 390 px</button>
+        </div>
+        <p id="prototype-status" role="status" aria-live="polite">Desktop preview · 1440 px wide</p>
+      </div>
+      <div class="prototype-frame-wrap">
+        <iframe id="prototype-frame" src="index.html" title="VHIS website prototype preview at 1440 pixels wide" width="1440" height="780"></iframe>
+      </div>
+    </section>
+  </main>
+  <script>
+    const previewFrame = document.querySelector("#prototype-frame");
+    const previewStatus = document.querySelector("#prototype-status");
+    document.querySelectorAll("[data-preview-width]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const width = Number(button.dataset.previewWidth);
+        const device = width === 1440 ? "Desktop" : width === 768 ? "Tablet" : "Mobile";
+        previewFrame.width = String(width);
+        previewFrame.title = `VHIS website prototype preview at ${width} pixels wide`;
+        previewStatus.textContent = `${device} preview · ${width} px wide`;
+        document.querySelectorAll("[data-preview-width]").forEach((control) => {
+          const active = control === button;
+          control.setAttribute("aria-pressed", String(active));
+          control.classList.toggle("button--outline", !active);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
