@@ -1,0 +1,117 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-text-primary antialiased;
+    font-family: var(--font-body);
+    margin: 0;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+
+  .skip-link {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  .skip-link:focus {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 50;
+    width: auto;
+    height: auto;
+    margin: 0;
+    clip: auto;
+    text-decoration: underline;
+  }
+}
+
+@layer components {
+  .container {
+    @apply mx-auto px-4 max-w-[1200px];
+  }
+
+  .button {
+    @apply inline-flex items-center justify-center px-6 py-3 text-text-primary bg-primary font-body font-semibold rounded-none transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none;
+  }
+
+  .button--small {
+    @apply px-4 py-2 text-sm;
+  }
+
+  .button--light {
+    @apply bg-surface border border-border;
+  }
+
+  .text-link {
+    @apply text-primary underline underline-offset-4 hover:no-underline transition-all duration-200;
+  }
+
+  .eyebrow {
+    @apply flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-text-secondary;
+  }
+
+  .eyebrow__rule {
+    @apply block h-[1px] w-8 bg-accent shrink-0;
+  }
+
+  .eyebrow--light .eyebrow__rule {
+    @apply bg-primary;
+  }
+
+  .nav-dropdown__menu {
+    @apply hidden absolute left-0 z-50 mt-2 w-56 bg-surface border border-border p-4 shadow-lg;
+  }
+
+  .nav-dropdown[open] > .nav-dropdown__menu {
+    @apply block;
+  }
+
+  .nav-dropdown summary {
+    @apply list-none cursor-pointer font-medium;
+  }
+
+  .nav-dropdown summary::marker {
+    @apply content-[''];
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  .announcement {
+    @apply bg-primary text-on-primary text-center text-sm px-4 py-2;
+  }
+
+  .announcement a {
+    @apply text-on-primary underline decoration-on-primary underline-offset-2 hover:no-underline;
+  }
+
+  .hero-showcase__image {
+    @apply aspect-video w-full bg-cover bg-center rounded-none overflow-hidden;
+  }
+}

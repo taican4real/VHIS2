@@ -1,0 +1,54 @@
+{
+  "name": "vhis-website",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Victory Heritage International School website — Next.js App Router + Payload CMS modular monolith",
+  "author": "Victory Heritage International School",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=24.22.1"
+  },
+  "packageManager": "pnpm@11.6.0",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "payload": "payload",
+    "generate:types": "payload generate:types",
+    "db:seed": "payload seed",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "next": "16.2.6",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "payload": "latest",
+    "@payloadcms/db-postgres": "latest",
+    "@payloadcms/next": "latest",
+    "@payloadcms/ui": "latest",
+    "drizzle-orm": "latest",
+    "pg": "latest",
+    "pino-pretty": "latest",
+    "lucide-react": "latest",
+    "clsx": "latest",
+    "tailwind-merge": "latest",
+    "zod": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "typescript": "^5.7.3",
+    "eslint": "latest",
+    "eslint-config-next": "latest",
+    "tailwindcss": "^3.4.17",
+    "postcss": "^8.4.49",
+    "autoprefixer": "^10.4.21",
+    "vitest": "latest",
+    "jsdom": "latest",
+    "@testing-library/react": "latest",
+    "@testing-library/jest-dom": "latest"
+  }
+}
