@@ -1,91 +1,112 @@
-import Link from 'next/link'
+import { Container } from '@/components/layout/container'
+import { Section } from '@/components/layout/section'
+import { Stack } from '@/components/layout/stack'
+import { Grid } from '@/components/layout/grid'
+import { Typography } from '@/components/ui/typography'
+import { Button } from '@/components/ui/button'
+import { Link } from '@/components/ui/link'
+import { Hero } from '@/components/homepage/hero'
+import { DivisionCarousel } from '@/components/homepage/division-carousel'
+import { DivisionCard } from '@/components/content/division-card'
+
+const divisionSlides = [
+  {
+    division: 'Nursery School',
+    title: 'A Strong Foundation for a Brighter Future.',
+    description: 'A welcoming beginning shaped around curiosity, care and early discovery.',
+    link: '/nursery',
+    linkText: 'Discover Nursery',
+    image: 'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=1500&q=90',
+    alt: 'Representative image of a young child exploring a classroom activity',
+  },
+  {
+    division: 'Primary School',
+    title: 'Building Knowledge, Confidence and Character.',
+    description: 'A supportive next step for growing knowledge, skills and self-belief.',
+    link: '/primary',
+    linkText: 'Discover Primary',
+    image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1500&q=90',
+    alt: 'Representative image of school-age children learning together',
+  },
+  {
+    division: 'Secondary School',
+    title: 'Preparing Tomorrow\'s Leaders Today.',
+    description: 'A place to deepen understanding, develop independence and look ahead.',
+    link: '/secondary',
+    linkText: 'Discover Secondary',
+    image: 'https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=1500&q=90',
+    alt: 'Representative image of secondary-age students collaborating in class',
+  },
+]
 
 export default function HomePage() {
   return (
-    <main id="main" className="space-y-12">
-      <section className="announcement">
-        <div className="container announcement__inner">
-          <span>One school community. Every stage of the journey.</span>
-          <Link href="/admissions">Explore admissions <span aria-hidden="true">↗</span></Link>
-        </div>
-      </section>
+    <main id="main" className="space-y-0">
+      <Section padding="desktop">
+        <Container>
+          <Typography variant="eyebrow">
+            <span className="eyebrow__rule"></span>
+            One school community. Every stage of the journey.
+          </Typography>
+          <Stack space="4">
+            <Hero
+              eyebrow="A place to grow, learn &amp; belong"
+              heading="A brighter future starts <em>together.</em>"
+              description="An engaging school community for every step of the journey—from the first discovery in nursery to the confidence and curiosity that carry students forward."
+              primaryCta={{
+                href: '/admissions#enquiry',
+                label: 'Make an admission enquiry',
+              }}
+              secondaryCta={{
+                href: '/application-form',
+                label: 'Preview application form (draft)',
+              }}
+            />
+            <DivisionCarousel slides={divisionSlides} />
+          </Stack>
+        </Container>
+      </Section>
 
-      <section className="hero">
-        <div className="container hero__grid">
-          <div className="hero__copy">
-            <p className="eyebrow"><span className="eyebrow__rule"></span>A place to grow, learn &amp; belong</p>
-            <h1>A brighter future<br /><em>starts together.</em></h1>
-            <p className="hero__intro">An engaging school community for every step of the journey—from the first discovery in nursery to the confidence and curiosity that carry students forward.</p>
-            <div className="hero__actions">
-              <Link href="/admissions#enquiry" className="button">Make an admission enquiry <span aria-hidden="true">↗</span></Link>
-              <Link href="/application-form" className="text-link">Preview application form (draft)</Link>
-            </div>
-            <div className="hero__note"><span className="note-dot" aria-hidden="true"></span> Nursery · Primary · Secondary</div>
-          </div>
-          <div className="hero-showcase" aria-label="Explore our three school divisions">
-            <div className="hero-showcase__image" id="slide-image" role="img" aria-label="Representative image of a welcoming early learning classroom" />
-            <div className="hero-showcase__shade" />
-            <div className="hero-showcase__top">
-              <span className="showcase-label">A school for every chapter</span>
-              <span className="showcase-count"><span id="slide-number">01</span><span className="showcase-count__slash">/</span>03</span>
-            </div>
-            <div className="hero-showcase__content" aria-live="polite" aria-atomic="true">
-              <p className="hero-showcase__division" id="slide-division">Nursery School</p>
-              <h2 id="slide-title">A Strong Foundation for a Brighter Future.</h2>
-              <p className="hero-showcase__description" id="slide-description">A welcoming beginning shaped around curiosity, care and early discovery.</p>
-              <a href="/nursery" className="button button--small" id="slide-link">Discover Nursery <span aria-hidden="true">↗</span></a>
-            </div>
-            <div className="hero-showcase__controls">
-              <button id="previous-slide" aria-label="Previous division slide">←</button>
-              <div className="carousel-dots" role="tablist" aria-label="Division slides">
-                {[0, 1, 2].map((i) => (
-                  <button key={i} role="tab" aria-selected={i === 0} aria-controls={`slide-${i}`} className="carousel-dot" data-slide={i} />
-                ))}
-              </div>
-              <button id="next-slide" aria-label="Next division slide">→</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="schools">
-        <div className="container">
-          <p className="eyebrow"><span className="eyebrow__rule"></span>Our schools</p>
-          <h2>One community, three <em>divisions.</em></h2>
-          <div className="school-grid">
-            <article className="school-card">
-              <div className="school-card__number">01</div>
-              <div className="school-card__body">
-                <p className="card-kicker">Early years foundation</p>
-                <h3>Nursery School</h3>
-                <p>A welcoming beginning shaped around curiosity, care and early discovery.</p>
-                <Link href="/nursery" className="text-link">Explore Nursery <span aria-hidden="true">↗</span></Link>
-              </div>
-            </article>
-            <article className="school-card">
-              <div className="school-card__number">02</div>
-              <div className="school-card__body">
-                <p className="card-kicker">Confident, capable learners</p>
-                <h3>Primary School</h3>
-                <p>A supportive next step for growing knowledge, skills and self-belief.</p>
-                <Link href="/primary" className="text-link">Explore Primary <span aria-hidden="true">↗</span></Link>
-              </div>
-            </article>
-            <article className="school-card">
-              <div className="school-card__number">03</div>
-              <div className="school-card__body">
-                <p className="card-kicker">Junior &amp; senior secondary</p>
-                <h3>Secondary School</h3>
-                <p>Developing independent thinkers who are ready to take on new challenges and possibilities.</p>
-                <Link href="/secondary" className="text-link">Explore Secondary <span aria-hidden="true">↗</span></Link>
-              </div>
-            </article>
-          </div>
-          <div className="section-action">
-            <Link href="/schools" className="text-link">Explore all school divisions <span aria-hidden="true">↗</span></Link>
-          </div>
-        </div>
-      </section>
+      <Section padding="desktop">
+        <Container narrow>
+          <Stack space="8">
+            <Typography variant="h2">
+              One community, three <em>divisions.</em>
+            </Typography>
+            <Grid cols="desktop" gap="desktop">
+              <DivisionCard
+                number="01"
+                kicker="Early years foundation"
+                title="Nursery School"
+                description="A welcoming beginning shaped around curiosity, care and early discovery."
+                href="/nursery"
+              />
+              <DivisionCard
+                number="02"
+                kicker="Confident, capable learners"
+                title="Primary School"
+                description="A supportive next step for growing knowledge, skills and self-belief."
+                href="/primary"
+              />
+              <DivisionCard
+                number="03"
+                kicker="Junior &amp; senior secondary"
+                title="Secondary School"
+                description="Developing independent thinkers who are ready to take on new challenges and possibilities."
+                href="/secondary"
+              />
+            </Grid>
+            <Stack space="4">
+              <Typography variant="body">
+                Explore all divisions and find the right fit for your child&rsquo;s journey.
+              </Typography>
+              <Link variant="text" href="/schools" className="button button--outline">
+                Explore all school divisions <span aria-hidden="true">↗</span>
+              </Link>
+            </Stack>
+          </Stack>
+        </Container>
+      </Section>
     </main>
   )
 }

@@ -1,0 +1,229 @@
+/**
+ * VHIS Design Tokens
+ * Victory Heritage International School — Design System v1.0
+ * Status: Draft for Technical Implementation (Phase 15)
+ */
+
+:root {
+  /* Primary — Main brand colour (from VHIS logo crimson) */
+  --vhis-color-primary: #A80028;
+  --vhis-color-primary-hover: #8A0020;
+  --vhis-color-primary-active: #6D0018;
+
+  /* Secondary — Supporting brand colour (deep burgundy from crest) */
+  --vhis-color-secondary: #680019;
+  --vhis-color-secondary-hover: #520013;
+
+  /* Accent — Highlight and CTA elements (logo gold-orange) */
+  --vhis-color-accent: #DB903A;
+  --vhis-color-accent-hover: #C77A2E;
+
+  /* Background — Main page background */
+  --vhis-color-background: #F8F5F2;
+
+  /* Surface — Cards and content surfaces */
+  --vhis-color-surface: #FFFEFA;
+  --vhis-color-surface-muted: #F0ECE5;
+
+  /* Text */
+  --vhis-color-text-primary: #1C2926;
+  --vhis-color-text-secondary: #655D5D;
+  --vhis-color-text-muted: #9A938A;
+
+  /* Border */
+  --vhis-color-border: #DEDFD8;
+  --vhis-color-border-hover: #C9C7BD;
+
+  /* Semantic feedback colours */
+  --vhis-color-success: #2F684B;
+  --vhis-color-warning: #855B1F;
+  --vhis-color-error: #A33333;
+
+  /* Focus — Keyboard focus indication */
+  --vhis-color-focus: #A8753D;
+
+  /* On-colour contrast colours */
+  --vhis-color-on-primary: #FFFEFA;
+  --vhis-color-on-secondary: #FFFFFF;
+  --vhis-color-on-accent: #1C2926;
+  --vhis-color-on-success: #FFFFFF;
+  --vhis-color-on-warning: #FFFFFF;
+  --vhis-color-on-error: #FFFFFF;
+
+  /* ==========================================================================
+     TYPOGRAPHY TOKENS
+     ========================================================================== */
+
+  /* Typefaces */
+  --vhis-font-display: 'Manrope', sans-serif;
+  --vhis-font-body: 'Inter', sans-serif;
+  --vhis-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Font weights */
+  --vhis-font-weight-regular: 400;
+  --vhis-font-weight-medium: 500;
+  --vhis-font-weight-semibold: 600;
+  --vhis-font-weight-bold: 700;
+  --vhis-font-weight-extrabold: 800;
+
+  /* Display — Homepage hero headings */
+  --vhis-type-display-size: clamp(48px, 5.2vw, 72px);
+  --vhis-type-display-line-height: 1.08;
+  --vhis-type-display-weight: var(--vhis-font-weight-extrabold);
+
+  /* H1 — Main page heading */
+  --vhis-type-h1-size: clamp(40px, 4.4vw, 56px);
+  --vhis-type-h1-line-height: 1.12;
+  --vhis-type-h1-weight: var(--vhis-font-weight-extrabold);
+
+  /* H2 — Major section heading */
+  --vhis-type-h2-size: clamp(32px, 3.5vw, 44px);
+  --vhis-type-h2-line-height: 1.15;
+  --vhis-type-h2-weight: var(--vhis-font-weight-extrabold);
+
+  /* H3 — Subsection heading */
+  --vhis-type-h3-size: clamp(24px, 2.6vw, 32px);
+  --vhis-type-h3-line-height: 1.3;
+  --vhis-type-h3-weight: var(--vhis-font-weight-bold);
+
+  /* H4 — Card and content heading */
+  --vhis-type-h4-size: 20px;
+  --vhis-type-h4-line-height: 1.4;
+  --vhis-type-h4-weight: var(--vhis-font-weight-semibold);
+
+  /* Body Large — Introductory paragraphs */
+  --vhis-type-body-large-size: 17px;
+  --vhis-type-body-large-line-height: 1.65;
+  --vhis-type-body-large-weight: var(--vhis-font-weight-regular);
+
+  /* Body — Standard paragraph text */
+  --vhis-type-body-size: 15px;
+  --vhis-type-body-line-height: 1.7;
+  --vhis-type-body-weight: var(--vhis-font-weight-regular);
+
+  /* Body Small — Supporting information */
+  --vhis-type-body-small-size: 12px;
+  --vhis-type-body-small-line-height: 1.65;
+  --vhis-type-body-small-weight: var(--vhis-font-weight-regular);
+
+  /* Caption — Image captions and metadata */
+  --vhis-type-caption-size: 10px;
+  --vhis-type-caption-line-height: 1.5;
+  --vhis-type-caption-weight: var(--vhis-font-weight-medium);
+
+  /* Label — Form labels and interface labels */
+  --vhis-type-label-size: 12px;
+  --vhis-type-label-line-height: 1.4;
+  --vhis-type-label-weight: var(--vhis-font-weight-semibold);
+
+  /* ==========================================================================
+     SPACING TOKENS (4-point scale)
+     ========================================================================== */
+
+  --vhis-space-1: 4px;
+  --vhis-space-2: 8px;
+  --vhis-space-3: 12px;
+  --vhis-space-4: 16px;
+  --vhis-space-5: 20px;
+  --vhis-space-6: 24px;
+  --vhis-space-8: 32px;
+  --vhis-space-10: 40px;
+  --vhis-space-12: 48px;
+  --vhis-space-16: 64px;
+  --vhis-space-20: 80px;
+  --vhis-space-24: 96px;
+
+  /* ==========================================================================
+     LAYOUT TOKENS
+     ========================================================================== */
+
+  /* Container widths */
+  --vhis-layout-container-max: 1200px;
+  --vhis-layout-container-wide: 1440px;
+
+  /* Gutters */
+  --vhis-layout-gutter-mobile: 18px;
+  --vhis-layout-gutter-tablet: 32px;
+  --vhis-layout-gutter-desktop: 24px;
+
+  /* Section spacing */
+  --vhis-layout-section-padding-mobile: 24px;
+  --vhis-layout-section-padding-tablet: 40px;
+  --vhis-layout-section-padding-desktop: 64px;
+
+  /* Grid gaps */
+  --vhis-layout-grid-gap-mobile: 16px;
+  --vhis-layout-grid-gap-tablet: 20px;
+  --vhis-layout-grid-gap-desktop: 24px;
+
+  /* Header height */
+  --vhis-layout-header-height: 72px;
+
+  /* Breakpoints */
+  --vhis-breakpoint-mobile: 390px;
+  --vhis-breakpoint-tablet: 768px;
+  --vhis-breakpoint-desktop: 1440px;
+
+  /* ==========================================================================
+     BORDER RADIUS TOKENS
+     ========================================================================== */
+
+  --vhis-radius-none: 0px;
+  --vhis-radius-small: 4px;
+  --vhis-radius-medium: 8px;
+  --vhis-radius-large: 12px;
+  --vhis-radius-pill: 9999px;
+
+  /* ==========================================================================
+     SHADOW TOKENS
+     ========================================================================== */
+
+  --vhis-shadow-card: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --vhis-shadow-dropdown: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --vhis-shadow-navigation: 0 8px 24px rgba(0, 0, 0, 0.1);
+  --vhis-shadow-dialog: 0 12px 40px rgba(0, 0, 0, 0.12);
+
+  /* ==========================================================================
+     BORDER WIDTH
+     ========================================================================== */
+
+  --vhis-border-width: 1px;
+  --vhis-focus-ring-width: 3px;
+
+  /* ==========================================================================
+     TRANSITION TOKENS
+     ========================================================================== */
+
+  --vhis-transition-fast: 150ms ease;
+  --vhis-transition-base: 250ms ease;
+  --vhis-transition-slow: 350ms ease;
+}
+
+/* ==========================================================================
+   DARK MODE OVERRIDES (reserved for future use)
+   ========================================================================== */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --vhis-color-background: #1C2926;
+    --vhis-color-surface: #24332F;
+    --vhis-color-surface-muted: #2E3D39;
+    --vhis-color-text-primary: #F8F5F2;
+    --vhis-color-text-secondary: #C9C7BD;
+    --vhis-color-text-muted: #9A938A;
+    --vhis-color-border: #3E4A46;
+    --vhis-color-border-hover: #525E5A;
+  }
+}
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --vhis-transition-fast: 0ms;
+    --vhis-transition-base: 0ms;
+    --vhis-transition-slow: 0ms;
+  }
+}

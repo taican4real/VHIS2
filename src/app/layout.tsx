@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter, Manrope } from 'next/font/google'
-import Header from '@/components/header'
-import Footer from '@/components/footer'
+import { Header } from '@/components/navigation/header'
+import { Footer } from '@/components/navigation/footer'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-body' })
@@ -34,7 +34,9 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${manrope.variable}`}>
       <head />
       <body>
-        <a className="skip-link" href="#main">Skip to content</a>
+        <a className="skip-link" href="#main">
+          Skip to content
+        </a>
         <Header />
         {children}
         <Footer />
