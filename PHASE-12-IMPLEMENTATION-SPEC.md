@@ -20,17 +20,17 @@ The additional VHIS Website Technical Specification (Draft v1.0) is treated as a
 | Decision | Proposed baseline | Approval / verification required |
 |---|---|---|
 | Application architecture | One TypeScript modular monolith: Next.js App Router with Payload CMS integrated into the same application | Technical lead validates Payload / Next compatibility and operating model |
-| Database | Render PostgreSQL, separate development/staging databases; Frankfurt is the recommended region | Project owner selected Render; verify exact plans, budget, retention and recovery objectives before provisioning |
-| Hosting | Render Node.js web service in Frankfurt, compatible with the selected Next.js and Payload versions | Project owner selected Render; verify plan, account access, staging access controls and storage integration |
+| Database | Managed PostgreSQL with encrypted connections, automated backups and point-in-time recovery | Select provider, region, retention and recovery objectives |
+| Hosting | Managed Node.js container/platform compatible with the selected Next.js and Payload versions; avoid committing to a provider until the compatibility spike | Verify long-running server, admin routes, image processing, jobs, email and object storage |
 | Styling | Implement the approved design with reusable CSS/Tailwind components; preserve the current prototype palette only if design approval confirms it | Obtain editable approved Figma or signed visual acceptance and approved tokens |
 | Public API | Same-origin, server-rendered public pages; narrow read-only `/api/public/*` endpoints only where a client interaction needs them | Confirm whether any external consumer needs public APIs |
 | CMS API | Payload admin UI and authenticated Payload endpoints; server-side access rules; public clients never call private/local APIs | Confirm staff identity and administrator onboarding |
 | Email | Authenticated transactional provider; enqueue notifications after durable enquiry write | Approve provider, sender domain, recipients and data content |
-| Media | Cloudflare R2 via the official Payload R2 adapter; EU jurisdiction recommended | Provider/region recommendation pending privacy and rights approval; synthetic non-production uploads only |
+| Media | S3-compatible object storage with public derivatives and private originals/administrative access | Approve provider, region, image rights workflow and limits |
 | Enquiry retention | Configurable, enforced deletion policy; production blocked until an approved duration and lawful basis are documented | VHIS management / data-protection lead approves retention and notice |
 | Student name field | Include only after VHIS confirms necessity and privacy wording; collect no child date of birth or academic records | Explicit form-field approval |
 | Analytics / consent | Privacy-reviewed analytics; no nonessential tracking before consent where required | Approve analytics, consent approach and cookie notice |
-| Source control | GitHub repository at [taican4real/VHIS2](https://github.com/taican4real/VHIS2); user selected public visibility and documented personal-account ownership rights | Repository populated with the prototype and project documents; formal VHIS ownership/transfer terms and branch protection remain to be confirmed |
+| Source control | VHIS-owned GitHub organization/repository; protected branches and CI | VHIS creates or grants organization access |
 | Carousel motion | Manual controls and indicators; no autoplay, matching the current approved prototype/handoff | Draft technical text mentions automatic rotation; any autoplay requires an explicit design/accessibility approval |
 | Contact form | Name, email, optional telephone, subject, message and approved privacy acknowledgement | Confirm whether subject is required and approve final labels/notice |
 | Maps / WhatsApp | Optional approved map destination and click-to-chat link; do not embed or expose unverified address/phone | Confirm actual school location, telephone, link target and third-party privacy impact |
@@ -38,7 +38,7 @@ The additional VHIS Website Technical Specification (Draft v1.0) is treated as a
 
 ### Architecture principles recommended by VHIS
 
-These are adopted as governing principles for the approved architecture direction. The project owner selected Render for hosting and PostgreSQL; final service configuration, privacy review, cost approval and operational evidence are still required before paid provisioning.
+These are adopted as governing principles for the proposal; the detailed architecture and provider selections still require Phase 13 approval.
 
 1. **Modular monolith:** one integrated Next.js and Payload CMS application, with explicit internal modules rather than separate microservices, unless a documented compatibility or operational finding requires reconsideration.
 2. **Private enquiries:** admissions and contact enquiry records stay in protected CMS collections. They are never returned by public content APIs, public search, sitemaps or anonymous media/content relations.

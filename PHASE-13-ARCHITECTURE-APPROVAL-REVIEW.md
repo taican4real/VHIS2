@@ -2,15 +2,15 @@
 
 **Version:** 1.0  
 **Prepared:** 2 November 2026  
-**Status:** Architecture direction and Render hosting/database choices approved by the VHIS project owner on 2 November 2026; recommendations for storage, region and budget are recorded below  
-**Implementation:** Phase 14 local scaffold work may proceed. Paid provisioning and staging deployment remain gated on VHIS account access, documented ownership, privacy review and budget approval  
+**Status:** Architecture direction approved by the VHIS project owner on 2 November 2026; provider and operational decisions remain pending  
+**Implementation:** Phase 14 may proceed only after its provider, account-ownership, budget, privacy/security and technical setup prerequisites are confirmed  
 **Related specification:** [Phase 12 Implementation Specification](./PHASE-12-IMPLEMENTATION-SPEC.md)
 
 ## 1. Decision requested
 
-The VHIS project owner approved the architecture direction and selected Render for hosting and PostgreSQL on 2 November 2026. Cloudflare R2, Frankfurt/EU data placement and a $75/month Phase 14 infrastructure cap are recommendations, not yet finance/privacy approval. Formal architecture approval does not authorize paid infrastructure provisioning or production deployment.
+Approve or amend the proposed Phase 13 architecture and resolve the blockers at the end of this paper. Formal approval is a gate, not a deployment authorization: Phase 14 setup still needs approved VHIS accounts, providers, budget and setup scope.
 
-The current workspace prototype and architecture materials were uploaded to [the VHIS2 GitHub repository](https://github.com/taican4real/VHIS2). It is public and currently under the personal account `taican4real`; the user chose public visibility and asked that personal-account ownership/transfer rights be documented. No Render or Cloudflare service, database, DNS change or deployment has been provisioned.
+The user has now approved the architecture direction and authorized progression to the next work. No GitHub repository, test application, cloud account, database, storage bucket, DNS setting or CI workflow has yet been created. The current workspace is not a Git repository.
 
 ## 2. Executive recommendation
 
@@ -81,23 +81,9 @@ The application architecture does not require a specific hosting vendor. Select 
 
 ### Recommendation
 
-Use **Render** for the application service and managed PostgreSQL, as selected by the project owner. Place the service and its database in the **Frankfurt region** so they can use Render's same-region private network. Use **Cloudflare R2 with the EU jurisdiction** for non-production test media and, after media-rights/privacy approval, approved public assets. Keep the integrated app portable as a container. Do not select Vercel solely because the frontend uses Next.js; its Payload upload limit would require additional direct-upload work.
+Choose the **managed Node.js container pattern** as the default decision for estimation, with the hosting provider selected after the technical lead compares a written quote and data-region/backup features. Keep the integrated app portable as a container. Do not select Vercel solely because the frontend uses Next.js, and do not rule it out without testing; the Payload file-upload limit is manageable with direct uploads but increases implementation and security work.
 
-The Frankfurt/EU placement is a recommendation based on Render's available regions and Cloudflare's EU storage jurisdiction, not a legal determination or approval to transfer personal data. Do not store live enquiry data or student images in Phase 14. Do not use Render free PostgreSQL for persistent environments: free databases expire after 30 days and lack recovery capabilities.
-
-### Phase 14 infrastructure estimate (recommendation; not a quote)
-
-For isolated development and private staging using synthetic data, budget against these current published Render prices:
-
-| Phase 14 resource | Recommended plan | Published monthly price |
-|---|---|---:|
-| Staging Node.js web service | 1 CPU / 2 GB (`1c-2g`) to avoid a tight memory limit for Next.js + Payload | $25 |
-| Staging PostgreSQL | 1 GB RAM (`0.5c-1g`) | $19 |
-| Development PostgreSQL | 256 MB RAM (`0.1c-256mb`) | $6 |
-| Cloudflare R2 | EU jurisdiction; first 10 GB-month and included operations | $0 within free allowance |
-| **Estimated baseline** | Excludes email, domain, taxes, overages and any production services | **$50/month** |
-
-Set a **provisional $75/month cap** for Phase 14, subject to finance approval. This includes a contingency for usage and would cover the optional $25 Render Pro workspace plan if required for team controls. Confirm the selected workspace plan, data retention/PITR, billing alerts and final dashboard quote before provisioning. Production resources, email and domain charges require a separate estimate and approval.
+The public school website has modest expected traffic, but CMS image uploads, scheduled maintenance, mail retries and reliable restores matter more than scale-to-zero alone. Avoid a free-tier production dependency without documented uptime, backup, security, usage and support acceptance.
 
 ## 5. Data and account ownership decision
 
@@ -120,23 +106,22 @@ These are **published USD price references observed on 2 November 2026**, not a 
 
 | Service / published reference | Cost indication | Important qualification |
 |---|---:|---|
-| Render workspace Hobby / Pro | $0 / $25 per month, plus compute | Workspace tier affects collaboration/platform features; service compute is billed separately |
-| Render web service | $7/month for 0.5 CPU / 512 MB; $25/month for 1 CPU / 2 GB | Current Phase 14 estimate uses the 1 CPU / 2 GB tier for staging; actual needs should be measured |
-| Render PostgreSQL | $6/month for 256 MB; $19/month for 1 GB | Current Phase 14 estimate uses separate development and staging databases; paid databases include PITR, with recovery window based on workspace plan |
+| Vercel Pro | $20/month plan price | Usage can be billed separately; project seats, compute, transfer, image transforms, cache and storage must be modeled from expected traffic |
+| Neon Launch PostgreSQL | Usage-based; Neon says a typical small database is about $15/month | Launch is usage metered, not a fixed quote; production storage, compute, transfer, snapshots and restore requirements change cost |
 | Cloudflare R2 Standard | 10 GB-month, 1M Class A and 10M Class B monthly free allowance; then $0.015/GB-month storage, operation fees, no internet egress charge | Confirm Payload R2 adapter compatibility, object delivery domain, lifecycle, backup and rights-controlled access |
 | Resend transactional email | Free allowance: 3,000 emails/month, 100/day; Pro listed at $20/month for 50,000 | Production sender verification, deliverability, support and real enquiry volume determine plan |
 | GitHub | Free organization plan; Team listed at $4/user/month | Confirm required branch/ruleset, security and audit features against VHIS collaboration needs |
 | Google Analytics 4 | Google describes Analytics as available at no cost | Privacy/consent implementation, account ownership and any third-party tooling remain costs/dependencies |
-| Domain, email, monitoring, tax and overage | **Not included in $50 baseline** | Confirm sender/domain, monitoring, retention/RPO/RTO, traffic and support plan before production |
+| Managed container hosting, domain, monitoring, backups | **Not estimated** | Need selected region, CPU/RAM, staging/prod topology, retention/RPO/RTO, traffic and support plan; obtain provider quote |
 
 ### Illustrative comparison only
 
-- The selected Render Phase 14 baseline is approximately **$50/month** before optional workspace upgrades, taxes and overages ($25 service + $19 staging database + $6 development database).
+- A Vercel Pro + Neon Launch small-database reference is roughly **$35/month before usage and all other costs** ($20 + Neon’s ~$15 typical small-database example).
 - R2 and email may initially fit free usage allowances, but free tiers are not a production reliability or retention decision. Resend Pro would add $20/month if required.
-- The proposed **$75/month cap is only for Phase 14 development/staging infrastructure**, not production or the complete project.
-- Actual Render dashboard pricing, usage, backup retention and any workspace upgrade must be verified before spending.
+- This is **not the recommended total project budget**: it omits hosting trade-offs, backups/snapshots, monitoring, domain, support, taxes, region and variable usage.
+- No equivalent container-host total can be responsibly stated until a specific region/runtime/DB size is quoted.
 
-**Cost approval gate:** the project owner requested a recommendation; finance/billing-owner approval of the $75/month cap and usage alerts is still required before paid provisioning.
+**Cost approval gate:** provide low/expected/high monthly scenarios for development, staging and production, plus annual renewal and data-transfer/backup overage assumptions. VHIS approves a budget cap and billing owner before account provisioning.
 
 ## 7. Data, privacy and security decisions
 
@@ -160,12 +145,12 @@ No technical design by itself establishes compliance with the Nigeria Data Prote
 |---|---|---|---|
 | ADR-001 | Integrated Next.js + Payload modular monolith; no microservices initially | Recommended | VHIS technical lead + project owner |
 | ADR-002 | Next.js 16 Active LTS and Payload-supported version; Node 24 LTS candidate; exact patches locked after clean compatibility spike | Preliminary docs check; runtime test pending | Technical lead |
-| ADR-003 | Render PostgreSQL; separate development and staging databases in Frankfurt; use paid plans with PITR | Provider selected; exact plan/budget approval pending | Technical lead + project owner |
+| ADR-003 | Payload PostgreSQL adapter, managed PostgreSQL, separate per-environment databases | Recommended; provider/region pending | Technical lead + project owner |
 | ADR-004 | CMS-managed structured content rendered by reusable code templates | Recommended | Product/design owner + technical lead |
 | ADR-005 | Enquiry records are private CMS data and excluded from public APIs | Required invariant | Project owner + privacy lead |
 | ADR-006 | VHIS controls infrastructure accounts or has documented transfer/ownership rights | Required invariant | VHIS project owner |
-| ADR-007 | Render Node.js web service; Frankfurt region; staging baseline 1 CPU / 2 GB | Provider/region selected; account and budget approval pending | Technical lead + project owner |
-| ADR-008 | Cloudflare R2 via official Payload R2 adapter; EU jurisdiction | Recommended by project owner request; privacy/rights and account setup pending | Technical lead + privacy lead |
+| ADR-007 | Managed Node container preferred; Vercel remains a priced/tested alternative | Pending hosting/cost approval | Technical lead + finance/project owner |
+| ADR-008 | Object storage via Payload R2 or S3 adapter; provider selection pending | Pending data-region/security/cost test | Technical lead |
 | ADR-009 | Email provider, account and public notification content | Pending | Admissions owner + privacy lead |
 | ADR-010 | Analytics and consent configuration | Pending | VHIS owner/privacy lead |
 
@@ -235,4 +220,4 @@ Sources were checked on **2 November 2026**. Vendor documentation, compatibility
 | VHIS privacy/legal reviewer | Pending | Pending | Pending | |
 | Finance/account owner | Pending | Pending | Pending | |
 
-**Phase 13 architecture direction: Approved by the project owner. Render hosting and database providers are selected. Cloudflare R2/EU and the $75/month Phase 14 cap are recommendations awaiting privacy/finance confirmation. Local scaffold work may proceed; paid provisioning and public/staging deployment remain gated.**
+**Phase 13 architecture direction: Approved by the project owner. Provider/operational decisions and technical evidence remain open. Phase 14 account provisioning is blocked until those decisions are approved.**
