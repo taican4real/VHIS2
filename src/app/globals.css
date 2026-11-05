@@ -736,3 +736,195 @@
     }
   }
 }
+
+/* ==========================================================================
+   PAGE-LEVEL COMPONENTS
+   ========================================================================== */
+
+.page-banner {
+  background-color: var(--vhis-color-primary);
+  color: var(--vhis-color-on-primary);
+  padding: var(--vhis-space-16) 0 var(--vhis-space-12) 0;
+}
+
+.page-banner__inner {
+  max-width: var(--vhis-layout-container-max);
+  margin: 0 auto;
+  padding-left: var(--vhis-layout-gutter-desktop);
+  padding-right: var(--vhis-layout-gutter-desktop);
+  width: 100%;
+}
+
+.page-banner__breadcrumbs {
+  margin-bottom: var(--vhis-space-4);
+}
+
+.page-banner__breadcrumb-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--vhis-space-2);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.page-banner__breadcrumb-item {
+  display: flex;
+  align-items: center;
+}
+
+.page-banner__breadcrumb-link {
+  color: var(--vhis-color-primary-light);
+  text-decoration: none;
+  font-size: var(--vhis-type-caption-size);
+  transition: color var(--vhis-transition-fast);
+}
+
+.page-banner__breadcrumb-link:hover {
+  color: var(--vhis-color-on-primary);
+  text-decoration: underline;
+}
+
+.page-banner__breadcrumb-separator {
+  color: var(--vhis-color-primary-light);
+  opacity: 0.6;
+}
+
+.page-banner__breadcrumb-current {
+  color: var(--vhis-color-on-primary);
+  font-size: var(--vhis-type-caption-size);
+  font-weight: var(--vhis-font-weight-medium);
+}
+
+.page-banner__title {
+  font-family: var(--vhis-font-display);
+  font-size: var(--vhis-type-h1-size);
+  line-height: var(--vhis-type-h1-line-height);
+  font-weight: var(--vhis-type-h1-weight);
+  color: var(--vhis-color-on-primary);
+  margin: 0;
+  max-width: 800px;
+}
+
+.page-banner__description {
+  font-size: var(--vhis-type-body-large-size);
+  line-height: var(--vhis-type-body-large-line-height);
+  color: var(--vhis-color-primary-light);
+  margin-top: var(--vhis-space-4);
+  max-width: 600px;
+}
+
+.section-heading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--vhis-space-3);
+  margin-bottom: var(--vhis-space-10);
+}
+
+.section-heading .eyebrow__rule {
+  background-color: var(--vhis-color-primary);
+}
+
+.cta-section {
+  background-color: var(--vhis-color-background);
+  padding: var(--vhis-space-16) 0;
+}
+
+.cta-section__inner {
+  max-width: var(--vhis-layout-container-max);
+  margin: 0 auto;
+  padding-left: var(--vhis-layout-gutter-desktop);
+  padding-right: var(--vhis-layout-gutter-desktop);
+  width: 100%;
+  text-align: center;
+}
+
+.cta-section__content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.cta-section__actions {
+  display: flex;
+  gap: var(--vhis-space-4);
+  justify-content: center;
+  margin-top: var(--vhis-space-6);
+  flex-wrap: wrap;
+}
+
+.feature-grid {
+  padding: var(--vhis-space-16) 0;
+}
+
+.feature-grid__inner {
+  max-width: var(--vhis-layout-container-max);
+  margin: 0 auto;
+  padding-left: var(--vhis-layout-gutter-desktop);
+  padding-right: var(--vhis-layout-gutter-desktop);
+  width: 100%;
+}
+
+.feature-grid__intro {
+  text-align: center;
+  margin-bottom: var(--vhis-space-12);
+}
+
+.feature-grid__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--vhis-space-3);
+}
+
+.feature-grid__item-icon {
+  width: 48px;
+  height: 48px;
+  background-color: var(--vhis-color-surface-muted);
+  border-radius: var(--vhis-radius-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--vhis-space-3);
+}
+
+.feature-grid__item-link {
+  margin-top: auto;
+  font-size: var(--vhis-type-body-small-size);
+  font-weight: var(--vhis-font-weight-semibold);
+  color: var(--vhis-color-primary);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.feature-grid__item-link:hover {
+  color: var(--vhis-color-primary-hover);
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: var(--vhis-space-6);
+  right: var(--vhis-space-6);
+  width: 48px;
+  height: 48px;
+  background-color: var(--vhis-color-primary);
+  color: var(--vhis-color-on-primary);
+  border: none;
+  border-radius: var(--vhis-radius-pill);
+  cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--vhis-shadow-dialog);
+  transition: all var(--vhis-transition-base);
+  z-index: 60;
+}
+
+.back-to-top:hover {
+  background-color: var(--vhis-color-primary-hover);
+  transform: translateY(-2px);
+}
+
+.back-to-top:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 var(--vhis-focus-ring-width) var(--vhis-color-focus);
+}
